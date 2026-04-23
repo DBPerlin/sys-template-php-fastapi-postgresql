@@ -1,11 +1,21 @@
 import hashlib
-from fastapi import HTTPException
+import hmac
+import os
+from fastapi import Header, HTTPException
 
 from db_core import conectar
 
 
 def _gerar_md5(texto: str) -> str:
     return hashlib.md5(texto.encode("utf-8")).hexdigest()
+
+
+def exigir_admin_secret(x_admin_secret: str = Header(None)):
+    esperado = os.getenv("ADMIN_API_SECRET", "")
+    if not esperado:
+        raise HTTPException(status_code=503, detail="ADMIN_API_SECRET não configurado no backend")
+    if not x_admin_secret or not hmac.compare_digest(x_admin_secret, esperado):
+        raise HTTPException(status_code=403, detail="Acesso negado")
 
 
 def validar_usuario_senha(nome: str, senha: str):

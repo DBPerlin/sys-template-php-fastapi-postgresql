@@ -40,7 +40,7 @@ Sistema de cadastro e moderação de **Experiências Exitosas na Nutrição**, d
 | Método | Rota | Descrição |
 |---|---|---|
 | `POST` | `/core/validar_usuario` | Login do admin (nome + senha MD5) |
-| `POST` | `/core/cadastrar_usuario` | Cria usuário admin |
+| `POST` | `/core/cadastrar_usuario` | Cria usuário admin — **requer header `X-Admin-Secret`** (ver `.env`) |
 | `GET`  | `/core/consulta-profissional` | Valida nutricionista (CRN + CPF) ⚠️ migrar p/ api-cfn |
 | `POST` | `/vivencias/nova_experiencia` | Cadastra experiência (multipart com arquivo) |
 | `POST` | `/vivencias/alterar_status` | Moderar (0 pendente / 1 aprovado / 2 rejeitado) |
@@ -84,6 +84,23 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
 Acesse: http://localhost:8012
+
+### Cadastrar um admin manualmente (produção)
+
+Enquanto não há painel admin para criação de usuários, rode de dentro do container do backend:
+
+```bash
+ssh ubuntu@18.119.250.163
+docker exec -it vivencias-backend bash
+
+# Dentro do container — o ADMIN_API_SECRET já está no ambiente
+curl -s -X POST http://localhost:8000/core/cadastrar_usuario \
+  -H "Content-Type: application/json" \
+  -H "X-Admin-Secret: $ADMIN_API_SECRET" \
+  -d '{"nome":"fulano","senha":"senha_escolhida"}'
+```
+
+A rota está **protegida por header secreto** (`X-Admin-Secret`) e só aceita chamadas com o segredo correto. Quando um painel admin for adicionado no frontend, o PHP enviará o header server-side (o segredo nunca toca o browser).
 
 ---
 

@@ -41,6 +41,7 @@
 - [x] Limpar 4 relatos de teste da base (IDs 1-4) via `DELETE FROM vivencias_experiencia WHERE id BETWEEN 1 AND 4`
 
 ## Dívidas técnicas / melhorias futuras
+- [ ] **Painel admin para cadastrar usuário:** a rota `POST /core/cadastrar_usuario` está protegida por header `X-Admin-Secret` (segredo compartilhado). Enquanto não houver painel admin no frontend, criar usuário rodando `curl` de dentro do container `vivencias-backend`. Quando o painel existir, o PHP envia o header server-side.
 - [ ] **Delete de experiência:** hoje não há endpoint para apagar relatos — é necessário rodar SQL direto no banco. Adicionar `DELETE /vivencias/experiencia/{id}` no backend (FKs já têm `ON DELETE CASCADE`) e coordenar com o dev do frontend para plugar botão na tela admin.
 - [ ] **Autenticação:** hoje a sessão é apenas um booleano (`$_SESSION["token"] = "autenticado"`) porque o backend não emite JWT. Implementar JWT com expiração e trocar o check nos PHPs.
 - [ ] **Migrar `/core/consulta-profissional` para api-cfn.** Esse endpoint é transversal — pertence naturalmente à API pública do CFN, não a este projeto. Quando migrar, remover de `backend/app/core/consulta_profissional.py`, `db_cnn.py`, variáveis `CNN_DB_*` do `.env`, e trocar no frontend `enviar_valida_profissional.php` para chamar `api.cfn.org.br`.

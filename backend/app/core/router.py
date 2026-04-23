@@ -1,7 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from core.auth import validar_usuario_senha, cadastrar_usuario
+from core.auth import validar_usuario_senha, cadastrar_usuario, exigir_admin_secret
 from core.consulta_profissional import consulta_profissional
 
 
@@ -40,7 +40,7 @@ def validar_usuario(payload: ValidarUsuarioRequest):
         raise HTTPException(status_code=500, detail=f"Erro ao validar usuário: {str(e)}")
 
 
-@router.post("/cadastrar_usuario")
+@router.post("/cadastrar_usuario", dependencies=[Depends(exigir_admin_secret)])
 def cadastrar_usuario_route(payload: CadastrarUsuarioRequest):
     try:
         return cadastrar_usuario(nome=payload.nome, senha=payload.senha)
