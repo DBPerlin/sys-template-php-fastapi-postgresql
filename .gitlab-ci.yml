@@ -1,0 +1,23 @@
+variables:
+  GIT_STRATEGY: none
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  tags:
+    - cfn-apps
+  only:
+    - main
+  script:
+    - cd /data/apps/vivencias
+    - git pull origin main
+    - docker build -t vivencias-backend:latest ./backend/
+    - docker build -t vivencias-web:latest ./web/
+    - docker compose down
+    - docker compose up -d
+    - docker image prune -f
+  environment:
+    name: production
+    url: https://vivencias.cfn.org.br

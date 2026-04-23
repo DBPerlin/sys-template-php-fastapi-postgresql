@@ -1,0 +1,64 @@
+# Override de desenvolvimento.
+# Sobe Postgres local + MySQL local para dev isolado.
+#
+# Uso:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+#
+# Em produção, use apenas docker-compose.yml (aponta pro CFN-BANCO via .env).
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: vivencias-postgres-dev
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=vivencias_admin
+      - POSTGRES_PASSWORD=devpass
+      - POSTGRES_DB=postgres
+      - TZ=America/Sao_Paulo
+    ports:
+      - "5442:5432"
+    volumes:
+      - vivencias-postgres-data:/var/lib/postgresql/data
+      - ./db/00-databases.sql:/docker-entrypoint-initdb.d/00-databases.sql:ro
+      - ./db/10-db_core.sql:/docker-entrypoint-initdb.d/10-db_core.sql:ro
+      - ./db/20-db_sistemas.sql:/docker-entrypoint-initdb.d/20-db_sistemas.sql:ro
+      - ./db/dev-seed/90-admin.sql:/docker-entrypoint-initdb.d/90-admin.sql:ro
+
+  mysql-cnn:
+    image: mysql:8.0
+    container_name: vivencias-mysql-cnn-dev
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=devroot
+      - MYSQL_DATABASE=db_list_nutricionistas
+      - MYSQL_USER=vivencias_admin
+      - MYSQL_PASSWORD=devpass
+      - TZ=America/Sao_Paulo
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3317:3306"
+    volumes:
+      - vivencias-mysql-cnn-data:/var/lib/mysql
+
+  backend:
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=vivencias_admin
+      - POSTGRES_PASSWORD=devpass
+      - POSTGRES_DB_CORE=db_core
+      - POSTGRES_DB_SISTEMAS=db_sistemas
+      - CNN_DB_HOST=mysql-cnn
+      - CNN_DB_PORT=3306
+      - CNN_DB_USER=vivencias_admin
+      - CNN_DB_PASSWORD=devpass
+      - CNN_DB_NAME=db_list_nutricionistas
+      - CPF_HASH_SECRET=dev-secret-trocar-em-producao
+    depends_on:
+      - postgres
+      - mysql-cnn
+
+volumes:
+  vivencias-postgres-data:
+  vivencias-mysql-cnn-data:

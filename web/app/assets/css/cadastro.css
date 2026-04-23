@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------
+# CADASTRO PAGE
+--------------------------------------------------------------*/
+
+.cadastro-page{
+  background-image: url("../img/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* CARD LOGIN */
+
+.cadastro-page .login-card{
+  border: none;
+  border-radius: 12px;
+}
+
+/* LOGO */
+
+.cadastro-page .logo{
+  max-width:250px;
+}
+
+/* TEXTOS */
+
+.cadastro-page h4{
+  font-size: 1.5rem;
+  font-weight: 570;
+  color: #ffffff;
+}
+
+.cadastro-page h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+/* BOTÃO */
+
+.cadastro-page .btn {
+  background-color: #0d8115;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+}
