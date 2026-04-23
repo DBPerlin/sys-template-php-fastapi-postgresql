@@ -3,6 +3,7 @@
 Sistema de cadastro e moderação de **Experiências Exitosas na Nutrição**, desenvolvido a pedido da Comissão de Comunicação do CFN.
 
 **Produção:** https://vivencias.cfn.org.br
+**Repo:** https://gitlab.cfn.org.br/ctec/vivencias
 **Porta interna:** 8012
 **Stack:** PHP 7.4 (frontend) + FastAPI/Python 3.11 (backend) + PostgreSQL + MySQL (consulta-profissional)
 
@@ -120,7 +121,7 @@ A rota está **protegida por header secreto** (`X-Admin-Secret`) e só aceita ch
 2. Na EC2 CFN-APPS:
    ```bash
    cd /data/apps
-   git clone https://gitlab.cfn.org.br/fellipe.rocha/vivencias.git
+   git clone https://gitlab.cfn.org.br/ctec/vivencias.git
    cd vivencias
    cp .env.example .env
    # editar .env com senhas reais
