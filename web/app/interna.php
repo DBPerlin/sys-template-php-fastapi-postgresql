@@ -190,7 +190,7 @@ Rejeitar
 <?php else: ?>
 
 <tr>
-<td colspan="11" class="text-center">
+<td colspan="13" class="text-center">
 Nenhum relato encontrado
 </td>
 </tr>
