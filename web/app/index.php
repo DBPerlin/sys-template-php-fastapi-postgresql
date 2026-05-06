@@ -99,88 +99,7 @@ include 'assets/inc/head.php';
   <!-- ======= START #main ======= -->
   <main id="main">
 
-    <!-- ======= START Section - SOBRE ======= -->
-    <section id="sobre" class="about">
-
-      <div class="container" data-aos="fade-up">
-        <div class="row gx-0">
-
-          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/about.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="content">
-              <h3>Conheça o Vivências em Nutrição</h3>
-              <h2>
-                O Vivências em Nutrição é uma iniciativa do Conselho Federal de Nutrição (CFN)
-                que valoriza e dá visibilidade às experiências profissionais desenvolvidas por
-                nutricionistas e técnicos em nutrição e dietética em diferentes áreas de atuação. Se você desenvolve projetos que promovem saúde,
-                fortalecem a segurança alimentar e geram impacto social, essa é a sua oportunidade de compartilhar 
-                sua prática com o Brasil.
-              </h2>
-              <p>
-                As experiências selecionadas serão apresentadas durante o CONBRAN 2026,
-                fortalecendo o intercâmbio de conhecimentos e o reconhecimento da atuação profissional.
-              </p>
-              <div class="text-center text-lg-start">
-                <a href="consultarelato.php" class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
-                  <span>Conheça relatos </span>
-                  <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </section><!-- END Section - SOBRE -->
-
-    <!-- ======= START Section - Apresentação ======= -->
-    <section id="apresentacao" class="values">
-
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h2>Nutrição em foco</h2>
-          <p>O que será apresentado</p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              <img src="assets/img/area_nutricao.png" class="img-fluid" alt="">
-              <h3>Áreas de Nutrição</h3>
-              <p>Clínica; esportiva; saúde coletiva; alimentação coletiva;
-                cadeia de produção, indústria e comércio de alimentos; ensino, pesquisa e extensão</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-            <div class="box">
-              <img src="assets/img/resumo_trabalho.png" class="img-fluid" alt="">
-              <h3>Resumo do Trabalho</h3>
-              <p>Uma apresentação do trabalho desenvolvido e divulgado pelo profissional</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-            <div class="box">
-              <img src="assets/img/fotos_registros.jpg" class="img-fluid" alt="">
-              <h3>Fotos e Registros</h3>
-              <p>Imagens de trabalhos postadas por diversos profissionais de todo território nacional</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- END Section - Apresentação -->
-
-    <!-- ======= START Section - Mapa ======= -->
+   <!-- ======= START Section - Mapa ======= -->
     <section id="mapa" class="features">
 
       <div class="container" data-aos="fade-up">
@@ -263,6 +182,88 @@ include 'assets/inc/head.php';
 
     </section>
     <!-- END Section - Mapa -->
+
+    <!-- ======= START Section - SOBRE ======= -->
+    <section id="sobre" class="about">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/about.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Conheça o Vivências em Nutrição</h3>
+              <h2>
+                O Vivências em Nutrição é uma iniciativa do Conselho Federal de Nutrição (CFN)
+                que valoriza e dá visibilidade às experiências profissionais desenvolvidas por
+                nutricionistas e técnicos em nutrição e dietética em diferentes áreas de atuação. Se você desenvolve projetos que promovem saúde,
+                fortalecem a segurança alimentar e geram impacto social, essa é a sua oportunidade de compartilhar 
+                sua prática com o Brasil.
+              </h2>
+              <p>
+                As experiências selecionadas serão apresentadas durante o CONBRAN 2026,
+                fortalecendo o intercâmbio de conhecimentos e o reconhecimento da atuação profissional.
+              </p>
+              <div class="text-center text-lg-start">
+                <a href="consultarelato.php" class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
+                  <span>Conheça relatos </span>
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- END Section - SOBRE -->
+
+    <!-- ======= START Section - Apresentação ======= -->
+    <section id="apresentacao" class="values">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h2>Nutrição em foco</h2>
+          <p>O que será apresentado</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <img src="assets/img/area_nutricao.png" class="img-fluid" alt="">
+              <h3>Áreas de Nutrição</h3>
+              <p>Clínica; esportiva; saúde coletiva; alimentação coletiva;
+                cadeia de produção, indústria e comércio de alimentos; ensino, pesquisa e extensão</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <img src="assets/img/resumo_trabalho.png" class="img-fluid" alt="">
+              <h3>Resumo do Trabalho</h3>
+              <p>Uma apresentação do trabalho desenvolvido e divulgado pelo profissional</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+            <div class="box">
+              <img src="assets/img/fotos_registros.jpg" class="img-fluid" alt="">
+              <h3>Fotos e Registros</h3>
+              <p>Imagens de trabalhos postadas por diversos profissionais de todo território nacional</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- END Section - Apresentação -->
+
 
     <!-- START Section - Logos Regionais -->
 
