@@ -14,9 +14,9 @@ h2{
     margin-bottom:25px;
 }
 
-.table{
-    font-size:14px;
-    min-width:1400px;
+.table {
+    font-size: 14px;
+    width: 100% !important;
 }
 
 .table thead th{
