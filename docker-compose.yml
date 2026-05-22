@@ -38,3 +38,5 @@ services:
           memory: 256M
         reservations:
           memory: 64M
+    volumes:
+      - ./web/app:/var/www/html
