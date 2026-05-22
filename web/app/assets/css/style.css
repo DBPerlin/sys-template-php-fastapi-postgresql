@@ -706,7 +706,7 @@ section {
 
 /*--------------------------------------------------------------
 # Recent Blog Posts
---------------------------------------------------------------*/
+--------------------------------------------------------------
 .recent-blog-posts .post-box {
   box-shadow: 0px 0 30px rgba(1, 112, 25, 0.08);
   transition: 0.3s;
@@ -767,6 +767,7 @@ section {
 .recent-blog-posts .post-box:hover .post-img img {
   transform: scale(1.2);
 }
+*/
 
 /*--------------------------------------------------------------
 # Footer
@@ -896,7 +897,11 @@ section {
 
 .footer .footer-top .footer-links {
   margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  
 }
+
 
 .footer .footer-top .footer-links ul {
   list-style: none;
@@ -947,6 +952,13 @@ section {
   text-align: center;
   font-size: 13px;
   color: #4a5c6f;
+}
+
+.footer-logo-sistema {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* --- [START] DECLARAÇÃO CORES MAPA REGIONAIS -- */
