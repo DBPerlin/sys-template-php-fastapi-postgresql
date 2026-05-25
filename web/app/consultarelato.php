@@ -77,7 +77,7 @@ $data = $response ? json_decode($response, true) : null;
                                             <?php echo date("d/m/Y", strtotime($row["criado_em"] ?? 'now')); ?>
                                         </span>
 
-                                        <h3 class="post-title">
+                                        <h3 class="post-title text-break">
                                             <?php echo htmlspecialchars($row["titulo_trabalho"]); ?>
                                         </h3>
 
@@ -124,51 +124,49 @@ $data = $response ? json_decode($response, true) : null;
     </a>
 
     <div class="modal fade" id="relatoModal" tabindex="-1">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable"> <div class="modal-content">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable"> 
+            <div class="modal-content">
                 
                 <div class="modal-header bg-light">
-                    <h5 class="modal-title fw-bold" id="modalTitulo"></h5>
+                    <h5 class="modal-title fw-bold text-break" id="modalTitulo" style="max-width: 95%;"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <div class="modal-body p-4">
-                    <div class="row">
+                <div class="modal-body p-4 clearfix">
+                    
+                    <div id="modalImagemContainer" class="float-lg-start me-lg-4 mb-3 text-center text-lg-start" style="max-width: 45%;">
+                        <img id="modalImagem" class="modal-imagem-relato img-fluid rounded shadow-sm" style="display: none;" alt="Imagem da vivência">
+                    </div> 
+
+                    <div id="modalTextoContainer" class="text-break">
                         
-                        <div class="col-lg-5 mb-4 mb-lg-0" id="modalImagemContainer">
-                            <img id="modalImagem" class="modal-imagem-relato" style="display: none;" alt="Imagem da vivência">
-                        </div> 
-
-                        <div class="col-lg-7" id="modalTextoContainer">
-                            
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h6 class="text-success mb-0 fw-bold">Sobre o Relato</h6>
-                                <a id="btnDownload" class="btn btn-sm btn-success" target="_blank" style="display: none;">
-                                    <i class="bi bi-download"></i> Baixar Anexo
-                                </a>
-                            </div>
-
-                            <div class="bg-light p-3 rounded mb-4">
-                                <p class="mb-1"><strong>Autor:</strong> <span id="modalNome"></span></p>
-                                <p class="mb-1"><strong>Área:</strong> <span id="modalArea"></span></p>
-                                <p class="mb-0"><strong>Estado:</strong> <span id="modalEstado"></span></p>
-                            </div>
-
-                            <h6 class="fw-bold">Objetivo</h6>
-                            <p id="modalObjetivo" class="text-muted"></p>
-
-                            <hr>
-                            <h6 class="fw-bold">Ações realizadas</h6>
-                            <p id="modalAcoes" class="text-muted"></p>
-
-                            <hr>
-                            <h6 class="fw-bold">Resultados</h6>
-                            <p id="modalResultados" class="text-muted"></p>
-
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="text-success mb-0 fw-bold">Sobre o Relato</h6>
+                            <a id="btnDownload" class="btn btn-sm btn-success" target="_blank" style="display: none;">
+                                <i class="bi bi-download"></i> Baixar Anexo
+                            </a>
                         </div>
 
-                    </div>
-                </div>
+                        <div class="bg-light p-3 rounded mb-4 overflow-hidden">
+                            <p class="mb-1"><strong>Autor:</strong> <span id="modalNome"></span></p>
+                            <p class="mb-1"><strong>Área:</strong> <span id="modalArea"></span></p>
+                            <p class="mb-0"><strong>Estado:</strong> <span id="modalEstado"></span></p>
+                        </div>
 
+                        <h6 class="fw-bold">Objetivo</h6>
+                        <p id="modalObjetivo" class="text-muted"></p>
+
+                        <hr>
+                        <h6 class="fw-bold">Ações realizadas</h6>
+                        <p id="modalAcoes" class="text-muted"></p>
+
+                        <hr>
+                        <h6 class="fw-bold">Resultados</h6>
+                        <p id="modalResultados" class="text-muted"></p>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -199,27 +197,20 @@ $data = $response ? json_decode($response, true) : null;
                 // Elementos do Modal
                 const modalImagem = document.getElementById("modalImagem");
                 const imgContainer = document.getElementById("modalImagemContainer");
-                const txtContainer = document.getElementById("modalTextoContainer");
                 const btnDownload = document.getElementById("btnDownload");
 
-                // Resetando o layout para o estado original (2 colunas) antes de carregar
+                // Resetando a visualização da imagem
                 imgContainer.style.display = "block";
                 modalImagem.style.display = "block";
-                txtContainer.classList.remove("col-lg-12");
-                txtContainer.classList.add("col-lg-7");
 
                 // Configs Imagem
                 if (modalImagem) {
                     modalImagem.src = urlArquivo;
                     
-                    // Se a imagem falhar (ex: erro 404 ou for um PDF), removemos a coluna da esquerda
+                    // Se a imagem falhar, esconde o container
                     modalImagem.onerror = function() {
                         this.style.display = "none";
                         imgContainer.style.display = "none";
-                        
-                        // Expande a coluna de texto para ocupar 100% da tela
-                        txtContainer.classList.remove("col-lg-7");
-                        txtContainer.classList.add("col-lg-12");
                     };
                 }
 
