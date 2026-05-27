@@ -50,8 +50,8 @@ $data = $response ? json_decode($response, true) : null;
         <h2 class="mb-4 mt-5">Painel Interno de Relatos</h2>
 
         <div class="card">
-            <div class="card-body">
-                <table id="tabelaRelatos" class="table table-striped table-hover nowrap w-100" style="width: 100%;">
+            <div class="card-body" style="overflow-x: hidden;">
+                <table id="tabelaRelatos" class="table table-striped table-hover nowrap w-100" style="width: 100%; opacity: 0; transition: opacity 0.4s ease;">
                     <thead class="table-dark">
                         <tr>
                             <th>ID</th>
@@ -202,20 +202,21 @@ $data = $response ? json_decode($response, true) : null;
     <script src="assets/js/main.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $('#tabelaRelatos').DataTable({
-                pageLength: 10,
-                responsive: true,
-                autoWidth: false,
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/pt-BR.json"
-                },
-                columnDefs: [
-                    { responsivePriority: 1, targets: 0 }, // ID
-                    { responsivePriority: 2, targets: 2 }, // Nome
-                    { responsivePriority: 3, targets: -1 } // Ações
-                ]
-            });
+        $('#tabelaRelatos').DataTable({
+            pageLength: 10,
+            responsive: true,
+            autoWidth: false,
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/pt-BR.json"
+            },
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 }, // ID
+                { responsivePriority: 2, targets: 2 }, // Nome
+                { responsivePriority: 3, targets: -1 } // Ações
+            ],
+            initComplete: function(settings, json) {
+                $('#tabelaRelatos').css('opacity', '1');
+            }
         });
 
         document.addEventListener("click", function(e) {
