@@ -134,7 +134,7 @@ $data = $response ? json_decode($response, true) : null;
 
                 <div class="modal-body p-4 clearfix">
                     
-                    <div id="modalImagemContainer" class="float-lg-start me-lg-4 mb-3 text-center text-lg-start" style="max-width: 45%;">
+                    <div id="modalImagemContainer" class="float-lg-start me-lg-4 mb-3 text-center text-lg-start" style="max-width: 700px;">
                         <img id="modalImagem" class="modal-imagem-relato img-fluid rounded shadow-sm" style="display: none;" alt="Imagem da vivência">
                     </div> 
 
