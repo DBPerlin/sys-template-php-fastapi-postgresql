@@ -82,7 +82,7 @@ require 'assets/data/crnList.php';
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label class="form-label">Telefone *</label>
-                                <input class="form-control" required name="telefone" id="telefone" type="text">
+                                <input class="form-control" required name="telefone" id="telefone" type="text" maxlength="15" placeholder="(00) 00000-0000">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Email *</label>
@@ -211,7 +211,7 @@ require 'assets/data/crnList.php';
     document.addEventListener("DOMContentLoaded", function () {
 
         // ==========================================
-        // 1. LÓGICA DO MODAL DE TERMO INICIAL
+        // LÓGICA DO MODAL DE TERMO INICIAL
         // ==========================================
         let modal = new bootstrap.Modal(document.getElementById('termoModal'));
         modal.show();
@@ -243,7 +243,7 @@ require 'assets/data/crnList.php';
 
 
         // ==========================================
-        // 2. LÓGICA DE VALIDAÇÃO DO PROFISSIONAL
+        // LÓGICA DE VALIDAÇÃO DO PROFISSIONAL
         // ==========================================
         const btnValidar = document.getElementById("btnValidar");
         const formRestante = document.getElementById("form_restante");
@@ -315,9 +315,25 @@ require 'assets/data/crnList.php';
             });
         });
 
+        // ==========================================
+        // MÁSCARA DO TELEFONE
+        // ==========================================
+        const telInput = document.getElementById('telefone');
+        if (telInput) {
+            telInput.addEventListener('input', function (e) {
+                let value = e.target.value;
+                value = value.replace(/\D/g, "");
+                value = value.substring(0, 11);
+                
+                value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+                value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+                
+                e.target.value = value;
+            });
+        }
 
         // ==========================================
-        // 3. MODO DEV
+        // MODO DEV
         // ==========================================
         /*
         const modoDev = true;
