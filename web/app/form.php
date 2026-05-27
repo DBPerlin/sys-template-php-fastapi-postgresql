@@ -42,17 +42,17 @@ require 'assets/data/crnList.php';
 
                     <div class="row g-3 align-items-end">
                         
-                        <div class="col-12 col-md-4">
+                        <div class="col-md-4">
                             <label class="form-label">Nome Completo *</label>
                             <input type="text" name="nome_completo" id="nome_completo" class="form-control" required>
                         </div>
 
-                        <div class="col-12 col-md-3">
+                        <div class="col-md-4">
                             <label class="form-label">Inscrição profissional *</label>
                             <input class="form-control" required name="inscricao" id="inscricao" type="text">
                         </div>
 
-                        <div class="col-12 col-md-3">
+                        <div class="col-md-4">
                             <label class="form-label">CRN *</label>
                             <select name="crn_id" id="crn_id" class="form-select" required>
                                 <option value="">Selecione</option>
@@ -64,8 +64,8 @@ require 'assets/data/crnList.php';
                             </select>
                         </div>
 
-                        <div class="col-12 col-md-2">
-                            <button type="button" id="btnValidar" class="btn btn-success w-100">
+                        <div class="col-12 d-flex justify-content-center mt-4">
+                            <button type="button" id="btnValidar" class="btn btn-success px-5">
                                 Validar
                             </button>
                         </div>
@@ -84,9 +84,13 @@ require 'assets/data/crnList.php';
                                 <label class="form-label">Telefone *</label>
                                 <input class="form-control" required name="telefone" id="telefone" type="text" maxlength="15" placeholder="(00) 00000-0000">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label class="form-label">Email *</label>
                                 <input class="form-control" required name="email" id="email" type="email">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">CPF *</label>
+                                <input class="form-control" required name="cpf" id="cpf" type="text" maxlength="14" placeholder="000.000.000-00">
                             </div>
                         </div>
                     </div>
@@ -333,9 +337,27 @@ require 'assets/data/crnList.php';
         }
 
         // ==========================================
+        // MÁSCARA DO CPF
+        // ==========================================
+        const cpfInput = document.getElementById('cpf');
+        if (cpfInput) {
+            cpfInput.addEventListener('input', function (e) {
+                let value = e.target.value;
+                value = value.replace(/\D/g, "");
+                value = value.substring(0, 11);
+                
+                value = value.replace(/(\d{3})(\d)/, "$1.$2");
+                value = value.replace(/(\d{3})(\d)/, "$1.$2");
+                value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+                
+                e.target.value = value;
+            });
+        }
+
+        // ==========================================
         // MODO DEV
         // ==========================================
-        /*
+        
         const modoDev = true;
         
         function liberarFormDev() {
@@ -349,7 +371,7 @@ require 'assets/data/crnList.php';
         if (modoDev) {
             liberarFormDev();
         }
-        */
+         
 
     });
     </script>
