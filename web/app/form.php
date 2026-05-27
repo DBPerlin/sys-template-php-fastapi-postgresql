@@ -357,7 +357,7 @@ require 'assets/data/crnList.php';
         // ==========================================
         // MODO DEV
         // ==========================================
-        
+        /*
         const modoDev = true;
         
         function liberarFormDev() {
@@ -371,7 +371,7 @@ require 'assets/data/crnList.php';
         if (modoDev) {
             liberarFormDev();
         }
-         
+        */  
 
     });
     </script>
