@@ -36,7 +36,7 @@
         <div class="modal-body">
 
           <iframe src="assets/docs/1_EDITAL_Vivencias_em_Nutricão_Cobran_2026_ final.pdf"
-          width="100%" height="500px"></iframe>
+          width="100%" height="900px"></iframe>
 
         </div>
 

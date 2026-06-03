@@ -42,7 +42,7 @@
                       </div>
                   </div>
 
-                  <div class="col-lg-4 col-6 footer-links">
+                  <div class="col-lg-4 col-6 footer-links text-center">
                       <!-- <h4>LINKS</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#"></a></li>
@@ -51,7 +51,9 @@
               title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe> -->
-                      <img src="assets/img/logo_sistema.png" alt="index.php" class="img-fluid">
+                      <img src="assets/img/logo_sistema.png" 
+                        alt="Logo do sistema"
+                        class="img-fluid footer-logo-sistema">
                   </div>
 
                   <!-- <div class="col-lg-2 col-6 footer-links">
@@ -69,7 +71,6 @@
                           Assis Chateaubriand<br>
                           Brasília-DF - CEP 70.340-906
                           <br><br>
-                          <strong>Fone:</strong> (61) 3225 6027<br>
                           <strong>E-mail:</strong> contato@cfn.org.br<br>
                       </p>
 
