@@ -39,6 +39,13 @@ $data = $response ? json_decode($response, true) : null;
     
     <style>
         .acoes-col { white-space: nowrap; }
+        
+        .titulo-col {
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 
@@ -210,13 +217,15 @@ $data = $response ? json_decode($response, true) : null;
                 url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/pt-BR.json"
             },
             columnDefs: [
-                { responsivePriority: 1, targets: 0 }, // ID
-                { responsivePriority: 2, targets: 2 }, // Nome
-                { responsivePriority: 3, targets: -1 } // Ações
-            ],
-            initComplete: function(settings, json) {
-                $('#tabelaRelatos').css('opacity', '1');
-            }
+                    { responsivePriority: 1, targets: 0 }, // ID
+                    { responsivePriority: 2, targets: 2 }, // Nome
+                    { responsivePriority: 3, targets: -1 }, // Ações
+                    
+                    { targets: 6, className: 'titulo-col' } 
+                ],
+                initComplete: function(settings, json) {
+                    $('#tabelaRelatos').css('opacity', '1');
+                }
         });
 
         document.addEventListener("click", function(e) {
