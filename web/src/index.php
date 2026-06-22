@@ -62,7 +62,7 @@
                             $db   = getenv('POSTGRES_DB') ?: 'template_db';
                             $user = getenv('POSTGRES_USER') ?: 'admin';
                             $pass = getenv('POSTGRES_PASSWORD') ?: 'senha_padrao';
-                            $port = "5432";
+                            $port = "5433";
 
                             $dsn = "pgsql:host=$host;port=$port;dbname=$db;user=$user;password=$pass";
 
