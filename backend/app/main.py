@@ -1,22 +1,21 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import os
 
-from core.router import router as core_router
-from vivencias.router import router as vivencias_router
+app = FastAPI(title="Template Backend API")
 
-
-app = FastAPI(
-    title="Vivências em Nutrição — API",
-    description="Backend do sistema de Experiências Exitosas na Nutrição (CFN)",
-    version="1.0"
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-app.include_router(core_router)
-app.include_router(vivencias_router)
-
-
 @app.get("/")
-def root():
+def read_root():
     return {
-        "status": "ok",
-        "servico": "Vivências em Nutrição API"
+        "status": "online",
+        "message": "Olá do FastAPI! Este é o seu template genérico rodando de forma independente.",
+        "database_url_configured": bool(os.getenv("DATABASE_URL"))
     }
